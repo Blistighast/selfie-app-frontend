@@ -1,12 +1,24 @@
-import Geolocation from './Components/Geolocation';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Geolocation from "./Components/Geolocation";
+import RootLayout from "./layouts/RootLayout";
+import LocationsList from "./pages/LocationsList";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Geolocation />} />
+      <Route path="locations-list" element={<LocationsList />} />
+    </Route>
+  )
+);
 
 function App() {
-  return (
-    <div className="App">
-      <Geolocation />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

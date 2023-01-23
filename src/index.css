@@ -1,7 +1,12 @@
+:root {
+  --primary: #ec353e;
+  --secondary: #19323c;
+}
+
 body {
-  background-color: #19323c;
+  background-color: var(--secondary);
   color: white;
-  margin: 0;
+  margin: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,4 +17,53 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  color: white;
+}
+
+button {
+  background-color: #ec353e;
+}
+
+.locationsList {
+  padding-top: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+nav h1 {
+  margin-right: auto;
+  color: var(--primary);
+  border-bottom: 3px solid;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+  margin: auto 0;
+}
+
+nav a.active {
+  border-bottom: 2px solid #ec353e;
+}
+
+.location {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1em;
+}
+
+.location > p:last-child {
+  font-size: 0.8em;
+  color: #bbb;
 }
