@@ -23,8 +23,16 @@ code {
   color: white;
 }
 
+.geolocation {
+  background-color: rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  border-radius: 5px;
+}
+
 button {
   background-color: #ec353e;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .locationsList {
