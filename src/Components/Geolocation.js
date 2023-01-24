@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import Weather from "./Weather";
+import weatherFetch from "./../utils/weatherFetch";
+import CoordinatesDisplay from "./CoordinatesDisplay";
+import postData from "./../utils/postData";
 
 const Geolocation = () => {
   const [location, setLocation] = useState({ lat: null, lon: null });
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -9,36 +14,24 @@ const Geolocation = () => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
         setLocation({ lat: lat, lon: lon });
+        setWeatherData(await weatherFetch(lat, lon));
       });
     } else {
       console.log("geolocation not available");
     }
   }, []);
 
-  const postData = async (lat, lon) => {
-    const data = { lat, lon };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-
-    const resp = await fetch("http://localhost:4000/api", options);
-    const json = await resp.json();
-    return json;
-  };
-
-  const handleClick = async ({ lat, lon }) => {
-    postData(lat, lon);
+  const handleClick = ({ lat, lon }, { weather, air }) => {
+    postData(lat, lon, weather, air);
   };
 
   return (
     <div className="geolocation">
-      <p className="latitude"> Latitude: {location.lat}</p>
-      <p className="longitude"> Longitude: {location.lon}</p>
-      <button onClick={() => handleClick(location)}>Post to Database</button>
+      <CoordinatesDisplay location={location} />
+      <button onClick={() => handleClick(location, weatherData)}>
+        Check In
+      </button>
+      <Weather weatherData={weatherData} />
     </div>
   );
 };

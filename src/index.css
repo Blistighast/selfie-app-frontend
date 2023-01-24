@@ -21,10 +21,6 @@ code {
     monospace;
 }
 
-* {
-  color: white;
-}
-
 .geolocation {
   background-color: rgba(0, 0, 0, 0.2);
   margin: auto;
@@ -64,6 +60,7 @@ nav a {
   padding: 6px;
   border-radius: 4px;
   margin: auto 0;
+  color: white;
 }
 
 nav a.active {
@@ -80,4 +77,15 @@ nav a.active {
 .location > p:last-child {
   font-size: 0.8em;
   color: #bbb;
+}
+
+.weather {
+  padding: 1em;
+}
+
+.leaflet-container {
+  margin: auto;
+  margin-top: 5em;
+  width: 80%;
+  height: 720px;
 }
