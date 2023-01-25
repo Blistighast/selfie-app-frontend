@@ -1,3 +1,5 @@
+import server_url from "./server_url";
+
 const postData = async (lat, lon, weather, air) => {
   const data = { lat, lon, weather, air };
   const options = {
@@ -8,7 +10,8 @@ const postData = async (lat, lon, weather, air) => {
     body: JSON.stringify(data),
   };
 
-  const resp = await fetch("http://localhost:4000/api", options);
+  const resp = await fetch(`${server_url}/api`, options);
+  // const resp = await fetch("http://localhost:4000/api", options);
   const json = await resp.json();
   return json;
 };

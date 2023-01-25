@@ -2,13 +2,15 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useEffect } from "react";
 import { useState } from "react";
 import kelvinToFahr from "./../utils/kelvinConverter";
+import server_url from "./../utils/server_url";
 
 const WorldMap = () => {
   const [locationsList, setLocationsList] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const resp = await fetch("http://localhost:4000/api");
+      const resp = await fetch(`${server_url}/api`);
+      // const resp = await fetch("http://localhost:4000/api");
       const data = await resp.json();
       setLocationsList(data);
     };
